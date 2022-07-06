@@ -6,7 +6,7 @@ LABEL author="merihun.m@yahoo.com"
 # Working Directory
 WORKDIR /app
 
-# ENV PIP_NO_CACHE_DIR=1
+ENV PIP_NO_CACHE_DIR=1
 # Copy source code to working directory
 COPY . /app/
 
