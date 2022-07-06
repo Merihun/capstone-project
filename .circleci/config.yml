@@ -16,6 +16,10 @@ jobs:
             - v1-dependencies-{{ checksum "hello_app/requirements.txt" }}
             # fallback to using the latest cache if no exact match is found
             # - v1-dependencies-
+      - shellcheck/install
+      # - run:
+      #     command: shellcheck <options>
+      #     name: Run Shellcheck command
       - run:
           name: Install dependencies
           command: |
