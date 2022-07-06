@@ -1,11 +1,20 @@
 # Udacity AWS DevOps Engineer Capstone Project
 
-[![Guillermo Ampie](https://circleci.com/gh/guillermo-ampie/devops-capstone.svg?style=shield)](https://github.com/guillermo-ampie/devops-capstone)
+[![Merihun Dingeto](https://app.circleci.com/pipelines/github/Merihun/capstone-project)](https://github.com/Merihun/capstone-project.git)
 
-## Project Overview
+## Capstone Project Overview
 
 This capstone project showcases the use of several CI/CD tools and cloud services covered in the program [Udacity - AWS Cloud DevOps Engineer.](https://www.udacity.com/course/cloud-dev-ops-nanodegree--nd9991)
+### Project scope
 
+* Continuous Integration phase uses Circle CI
+* Deployment type - rolling deployment
+* Docker application - python/[flask]
+* DevOps VCS tool - Git/GitHub repository is used for source code managment and to construct pipeline
+* AWS Kubernetes as a Service 
+    - CloudFormation is used to build Kubernetes Cluster “infrastructure”
+    - CloudFormation is used for Kubernetes cluster initialization
+* Docker is used to containerize application
 ### Introduction
 
 This project "operationalize" a sample python/[flask](https://flask.palletsprojects.com/)
@@ -14,7 +23,7 @@ demo app ["hello"](./hello_app/hello.py), using [CircleCI](https://www.circleci.
 
 * In a [CircleCI](https://www.circleci.com) pipeline, we lint the project's code, build
  a [Docker](https://www.docker.com/resources/what-container) image and deploy it to a public
-Docker Registry: [Docker Hub](https://hub.docker.com/repository/docker/gampie/hello-app)
+Docker Registry: [Docker Hub](https://hub.docker.com/repository/docker/minuet/hello-app)
 * Then in an [AWS EKS](https://aws.amazon.com/eks/) cluster, we run the application
 * Later, we promote to production a new app version using a rolling update strategy
 
@@ -33,7 +42,7 @@ The project includes the following main tasks:
   * Lints shell scripts, Dockerfile and python code
 * Create a Dockerfile to "containerize" the [hello](/hello_app/hello.py) application: [Dockerfile](hello_app/Dockerfile)
 * Deploy to a public Docker Registry:
- [Docker Hub](https://hub.docker.com/repository/docker/gampie/hello-app) the containerized application
+ [Docker Hub](https://hub.docker.com/repository/docker/minuet/hello-app) the containerized application
 * Deploy a Kubernetes cluster:  `make eks-create-cluster`
 * Deploy the application:  `make k8s-deployment`
 * Update the app in the cluster, using a rolling-update strategy:  `make rolling-update`
@@ -60,7 +69,7 @@ Alternatively, you can use `curl`: `curl localhost:80` or `curl LOAD_BALANCER_IP
 * [AWS CLI](https://aws.amazon.com/cli/) - Command-line tool for AWS
 * [CloudFormation](https://aws.amazon.com/cloudformation/) - Infrastructure as Code
 * [kubectl](https://kubernetes.io/docs/reference/kubectl/) - a command-line tool to control Kubernetes clusters
-* [Docker Hub](https://hub.docker.com/repository/docker/gampie/hello-app) - Container images repository service
+* [Docker Hub](https://hub.docker.com/repository/docker/minuet/hello-app) - Container images repository service
 
 #### CicleCI Variables
 
@@ -88,3 +97,7 @@ The following shell scripts are invoked from the [Makefile](./Makefile)
 * [install_shellcheck.sh](./bin/install_shellcheck.sh): installs the shellcheck(for shell scripts) linter tool
 * [k8s_cleanup_resources.sh](./bin/k8s_cleanup_resources.sh): deletes services and deployments in a K8S cluster
 * [k8s_deployment.sh](./bin/k8s_deployment.sh): deploys and exposes a service in the K8S cluster
+
+### Deployment Logs
+
+* [deployment-log.txt](./bin/deployment-log.txt): log file for deployment and exposing a service in the K8S cluster
