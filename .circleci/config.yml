@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   docker: circleci/docker@1.5.0
+  shellcheck: circleci/shellcheck@3.1.1
 
 jobs:
   init:
@@ -18,17 +19,17 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            python3 -m venv .devops-capstone
-            source .devops-capstone/bin/activate
+            python3 -m venv .capstone-project
+            source .capstone-project/bin/activate
             make install
       - save_cache:
           paths:
-            - ./.devops-capstone # TODO: Include in cache the "bin" directory
+            - ./.capstone-project # TODO: Include in cache the "bin" directory
           key: v1-dependencies-{{ checksum "hello_app/requirements.txt" }}
       - run:
           name: Run lint
           command: |
-            source .devops-capstone/bin/activate
+            source .capstone-project/bin/activate
             make lint
 
 workflows:
