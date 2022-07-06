@@ -37,22 +37,37 @@ jobs:
           command: |
             source .capstone-project/bin/activate
             make lint
-
+  build-and-push-docker-image:
+    docker:
+      - image: docker:17.05.0-ce-git
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build application Docker image
+          command: |
+            pwd
+            # cd frontend
+            # docker build -t $DOCKER_LOGIN/hello-app .
+            # docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
+            # docker push $DOCKER_LOGIN/hello-app
 workflows:
   default:
     jobs:
       - init
-      - docker/publish:
-          matrix:
-            parameters:
-              image: [$DOCKER_LOGIN/hello-app]
-              path: [hello_app]
-              docker-context: [hello_app]
-              deploy: [true]
-              # We publish two images with different version tags:
-              # - numbered version
-              # - "latest"
-              # tag: ['$(<hello_app/VERSION.txt)-${CIRCLE_SHA1:0:7}', 'latest']
-              tag: ["$(<hello_app/VERSION.txt)", "latest"]
-              update-description: [true]
+      - build-and-push-docker-image:
+          requires: [init]
+      # - docker/publish:
+      #     matrix:
+      #       parameters:
+      #         image: [$DOCKER_LOGIN/hello-app]
+      #         path: [hello_app]
+      #         docker-context: [hello_app]
+      #         deploy: [true]
+      #         # We publish two images with different version tags:
+      #         # - numbered version
+      #         # - "latest"
+      #         # tag: ['$(<hello_app/VERSION.txt)-${CIRCLE_SHA1:0:7}', 'latest']
+      #         tag: ["$(<hello_app/VERSION.txt)", "latest"]
+      #         update-description: [true]
           requires: [init]
