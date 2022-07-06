@@ -25,6 +25,8 @@ jobs:
           command: |
             python3 -m venv .capstone-project
             source .capstone-project/bin/activate
+            sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64
+            sudo chmod +x /bin/hadolint
             make install
       - save_cache:
           paths:
