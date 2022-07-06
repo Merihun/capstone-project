@@ -55,8 +55,8 @@ workflows:
   default:
     jobs:
       - init
-      - build-and-push-docker-image:
-          requires: [init]
+      # - build-and-push-docker-image:
+      #     requires: [init]
       # - docker/publish:
       #     matrix:
       #       parameters:

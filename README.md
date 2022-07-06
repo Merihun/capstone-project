@@ -1,7 +1,7 @@
 # Udacity AWS DevOps Engineer Capstone Project
 
-[![Merihun Dingeto](https://app.circleci.com/pipelines/github/Merihun/capstone-project)](https://github.com/Merihun/capstone-project.git)
-
+<!-- [![Merihun Dingeto](https://app.circleci.com/pipelines/github/Merihun/capstone-project)](https://github.com/Merihun/capstone-project.git) -->
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/Merihun/capstone-project/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/Merihun/capstone-project/tree/master)
 ## Capstone Project Overview
 
 This capstone project showcases the use of several CI/CD tools and cloud services covered in the program [Udacity - AWS Cloud DevOps Engineer.](https://www.udacity.com/course/cloud-dev-ops-nanodegree--nd9991)
